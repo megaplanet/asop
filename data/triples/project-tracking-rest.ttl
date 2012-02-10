@@ -1,0 +1,58 @@
+	
+attribute:n6
+	rdf:type				owl:ObjectProperty ;
+	rdfs:label 				"name";
+	rdfs:comment 			"the director of the production";
+	rdfs:domain
+	soo:name					"name" ;
+	soo:attributeClassF		classfragment:n3 ;
+	soo:typeExpression		"A(S)" ;
+	soo:attributeType		type:String ;
+	soo:positionInLabel		0 .
+	
+attribute:n11
+	soo:name					"tasks" ;
+	soo:attributeClassF		classfragment:n3 ;
+	soo:typeExpression		"C(http://localhost:8080/social-server-2/resource/ClassFragment/4,10)" ;
+	soo:opposite				attribute:n10 ;
+	soo:attributeType		type:C4 ;
+	soo:positionInLabel		-1 .
+	
+attribute:n8
+	soo:name					"state" ;
+	soo:attributeClassF		classfragment:n4 ;
+	soo:typeExpression		"E(WAITING,DONE)" ;
+	soo:attributeType		type:E8 ;
+	soo:positionInLabel		-1 .
+	
+attribute:n10
+	soo:name					"project" ;
+	soo:attributeClassF		classfragment:n4 ;
+	soo:typeExpression		"R(ClassFragment/3)" ;
+	soo:attributeType		type:R3 ;
+	soo:positionInLabel		-1 .
+	
+type:String
+	soo:type					"DataType" ;
+	soo:name					"String" ;
+	soo:cardinalityMin		0 ;
+	soo:cardinalityMax		1 .
+
+	
+type:C4
+	soo:type					"ReferenceCollection" ;
+	soo:referencedClassF		classfragment:n4 ;
+	soo:cardinalityMin		0 ;
+	soo:cardinalityMax		-1 .
+
+type:R3
+	soo:type					"Reference" ;
+	soo:referencedClassF		classfragment:n3 ;
+	soo:cardinalityMin		0 ;
+	soo:cardinalityMax		1 .
+	
+type:E8
+	soo:type					"Enumeration" ;
+	soo:enumerationLiteral	"WAITING" ;
+	soo:enumerationLiteral	"DONE" .	
+	

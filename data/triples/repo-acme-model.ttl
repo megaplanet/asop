@@ -1,0 +1,120 @@
+@prefix xsd:					<http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: 					<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:					<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:					<http://www.w3.org/2002/07/owl#> .
+
+@prefix soo: 					<http://localhost/socialobjects/schema.ttl#> .
+
+@prefix actor: 					<http://localhost/asop/DIR/Actor/>.
+@prefix repository:				<http://localhost/asop/srdf$>.
+@prefix perspective:			<http://localhost/asop/srdf$acme/Perspective/>.
+@prefix classfragment:			<http://localhost/asop/srdf$acme/ClassFragment/>.
+@prefix attribute:				<http://localhost/asop/srdf$acme/Attribute/>.
+
+
+#---------------------------------------------------------------------------------
+#     Repository
+#---------------------------------------------------------------------------------
+
+repository:acme
+	rdf:type						soo:Repository ;
+	soo:name						"ACME" ;
+	soo:repositoryURL				"http://localhost/asop/srdf$acme" ;
+	soo:repositoryDialect			"default" ;
+	soo:repositoryIsReadOnly		true .
+
+#---------------------------------------------------------------------------------
+#     Perspectives
+#---------------------------------------------------------------------------------
+
+perspective:n2
+	rdf:type						soo:Perspective ;
+	soo:name						"ProjectTracker 1.0" ;
+	soo:perspectiveRepository		repository:acme ;
+	soo:perspectiveOwner			actor:n1 .
+			
+	
+perspective:n21
+	rdf:type						soo:Perspective ;
+	soo:name						"project.acme.com" ;
+	soo:perspectiveRepository		repository:acme ;
+	soo:perspectiveOwner			actor:n20 ;
+	soo:classFragmentIncluded		classfragment:n3 ,
+									classfragment:n4 ,
+									classfragment:n5 .
+
+perspective:n31
+	rdf:type						soo:Perspective ;
+	soo:name						"SoftwareDevelopment" ;
+	soo:perspectiveRepository		repository:acme ;
+	soo:perspectiveOwner			actor:n30 ;
+	soo:classFragmentExcluded		classfragment:n5 .
+	
+perspective:n51
+	rdf:type						soo:Perspective ;
+	soo:name						"~maria" ;
+	soo:perspectiveRepository		repository:acme ;
+	soo:perspectiveOwner			actor:n50 ;
+	soo:classFragmentExcluded		classfragment:n4 .
+	
+perspective:n61
+	rdf:type						soo:Perspective ;
+	soo:name						"~ahmed" ;
+	soo:perspectiveRepository		repository:acme ;
+	soo:perspectiveOwner			actor:n60 ;
+	soo:classFragmentIncluded		classfragment:n5 .
+	
+#---------------------------------------------------------------------------------
+#     ClassFragments
+#---------------------------------------------------------------------------------	
+	
+classfragment:n3
+	rdf:type						soo:ClassFragment ;
+	soo:name						"Project" ;
+	soo:classFragmentPerspective 	perspective:n2 .
+
+classfragment:n4
+	rdf:type						soo:ClassFragment ;
+	soo:name						"Task" ;
+	soo:classFragmentPerspective	perspective:n2 .
+	
+classfragment:n5
+	rdf:type						soo:ClassFragment ;
+	soo:name						"Resource" ;
+	soo:classFragmentPerspective	perspective:n2 .
+	
+classfragment:n22
+	rdf:type						soo:ClassFragment ;
+	soo:name						"*Project" ;
+	soo:classFragmentPerspective	perspective:n21 ;
+	soo:classFragmentExtended		classfragment:n3 .	
+	    
+classfragment:n32
+	rdf:type						soo:ClassFragment ;
+	soo:name						"*Task" ;
+	soo:classFragmentPerspective	perspective:n31 ;
+	soo:classFragmentExtended		classfragment:n4 .	
+	
+classfragment:n33
+	rdf:type						soo:ClassFragment ;
+	soo:name						"Product" ;
+	soo:classFragmentPerspective	perspective:n31 .
+	
+classfragment:n52
+	rdf:type						soo:ClassFragment ;
+	soo:name						"*Project" ;
+	soo:classFragmentPerspective	perspective:n51 ;
+	soo:classFragmentExtended		classfragment:n3 .	
+	
+classfragment:n62
+	rdf:type						soo:ClassFragment ;
+	soo:name						"*Task" ;
+	soo:classFragmentPerspective	perspective:n61 ;
+	soo:classFragmentExtended		classfragment:n4 .	
+	
+classfragment:n63
+	rdf:type						soo:ClassFragment ;
+	soo:name						"Platform" ;
+	soo:classFragmentPerspective	perspective:n61 .
+
+	

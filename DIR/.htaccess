@@ -1,0 +1,9 @@
+RewriteEngine On
+
+RewriteRule ^/?$ DirectoryServerController.php?type=Directory [L,QSA]
+
+RewriteRule ^SOID$ DirectoryServerController.php\?type=Soid [L,QSA]
+
+RewriteRule ^Actor/?$ DirectoryServerController.php\?type=Actor [L,QSA]
+RewriteRule ^Actor/([^/]*)/?$ DirectoryServerController.php\?type=Actor&actor_id=$1 [L,QSA]
+

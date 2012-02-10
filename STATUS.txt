@@ -1,0 +1,42 @@
+
+ONGOING:
+  implementing getAllPerspectiveIds, getAttribute  
+	  in the interface (done)
+		in the specification
+		  update the wiki https://sites.google.com/site/mkqphd/social-objects/specifications
+			update uml (done?)
+		in the the implementation
+		  JsonRepository
+			  the attribute json format should be reviewed to include the class fragment
+          when alone but not when this is embedded in a class fragment ...
+      AbstractRepository
+        implement loadPerspectiveSoids (should be easy)
+        decide if loadAttribute should go to IModelLoader and how to implement getAttribute
+			Data
+			
+	RDF/SPARQL
+	  extensions/repositories/srdf
+	    here will be a implementation of the repository in as a rdfstore, with the soo ontology
+	  sparql
+	    allows to access to RDF store thanks to a sparql endpoint	
+        use a url of the form asop/sparql/<repositoryname>  for instance test
+        the API key is required to write in the database, it is "x"
+
+==============================================================================
+TODO:
+
+MetaRepository:
+* check the correspondance with UML documentation. ImportDeclaration target a class, not a perspective!
+* ask marc the constraint over the schema
+
+
+AbstractRepository:
+* Is the distinction between ReadOnly and Query really usefull? It is always possible to list all the elements and filter them on value as a generic implementation. This should certainly be the default behavior. In fact, a good way to proceed is that if child class redefine the query method, they can call the method with the criterion that have not been taken into account.
+* Adding the notion of Type is useful and important to deal in a convinent way with references
+
+
+Historical repository:
+
+ProxyRepository
+
+SPARQLRepository
